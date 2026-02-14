@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> open this when u feel loved, dikii</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+    
+<body> 
+    <audio id="bgMusic" src="LANY_-_you!_(Lyrics)_128k.mp3"></audio>
+<canvas id="rain"></canvas>
+<script>
+const canvas = document.getElementById("rain");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let raindrops = [];
+
+for (let i = 0; i < 120; i++) {
+  raindrops.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    length: Math.random() * 20 + 10,
+    speed: Math.random() * 4 + 3,
+    opacity: Math.random() * 0.4 + 0.2
+  });
+}
+
+function drawRain() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.lineWidth = 1.5;
+  ctx.lineCap = "round";
+
+  for (let i = 0; i < raindrops.length; i++) {
+    let drop = raindrops[i];
+
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(255, 182, 193, ${drop.opacity})`; // pink rain
+    ctx.moveTo(drop.x, drop.y);
+    ctx.lineTo(drop.x, drop.y + drop.length);
+    ctx.stroke();
+
+    drop.y += drop.speed;
+
+    if (drop.y > canvas.height) {
+      drop.y = -20;
+      drop.x = Math.random() * canvas.width;
+    }
+  }
+
+  requestAnimationFrame(drawRain);
+}
+
+drawRain();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+
+<!-- PAGE 1 -->
+<div class="card" id="page1">
+    <h2>haloo dede sayangg</h2>
+    <p class="subtitle">i made this just for u💌</p>
+    <p class="subtitle"> hmm will u be my... valentine?</p>
+
+    <div class="btn-group">
+        <button onclick="nextPage()">yes!</button>
+        <button class="no-btn" onclick="sayNo()">no</button>
+    </div>
+
+    <p id="noText" class="no-text hidden">pikir lagi plisss 🥺</p>
+</div>
+
+
+<!-- PAGE GAME -->
+<div class="card hidden" id="gamePage">
+    <h3>sepertinya harus main game dulu dehh</h3>
+    <p>cari terus pasangin emoji yang sama yaa sayaangg!</p>
+    <p>Moves: <span id="moves">0</span></p>
+
+    <div class="game-grid" id="gameGrid"></div>
+</div> 
+
+
+
+<!-- PAGE 2 -->
+<div class="card hidden" id="page2">
+    <h2>💌</h2>
+    <p class="subtitle">Alasan kenapa aku poling in lop sama kamu</p>
+
+    <div class="reason-item" onclick="unlockReason(this)">1️⃣ yapp karena kamu itu LUCUUU BANGETT</div>
+    <div class="reason-item" onclick="unlockReason(this)">2️⃣ baikk juga</div>
+    <div class="reason-item" onclick="unlockReason(this)">3️⃣ u work so hard mungkin termasuk juga yaa??</div>
+    <div class="reason-item" onclick="unlockReason(this)">4️⃣ aku pokonya bangga banget sama kamuu</div>
+    <div class="reason-item" onclick="unlockReason(this)">5️⃣ ini aku suka karena suka hehe wopyuu</div>
+
+    <button id="letterBtn" onclick="showLetter()" disabled>
+        pencet semua yang di atas dulu baru bisa pencet ini sayangg
+    </button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card hidden" id="page3">
+    <h2>Happy valentine to the man who owns my heart 🤍</h2>
+    <div id="letterContent"></div> <!-- tempat munculnya teks letter -->
+</div>
+
+<script src="script.js"></script>
+
+</body> 
+</html>
+    <p>
+
+
+    </p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<!-- PAGE 4 -->
+<div class="card hidden" id="page4">
+    <h2> hmm...</h2>
+    <p>
+        sayang ga sama aku? 💗
+    </p>
+
+    <button onclick="finalAnswer()">sayang</button>
+</div>
+
+<div class="card hidden" id="page4">
+    <h2>hmm...</h2>
+    <p>sayang ga sama aku? 💗</p>
+
+    <button onclick="finalAnswer()">sayang</button>

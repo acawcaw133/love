@@ -142,7 +142,7 @@ async function showLetter() {
         }
     }
 
-    // setelah 5 detik otomatis ke page 4
+    // setelah 10 detik otomatis ke page 4
     setTimeout(() => {
         document.getElementById("page3").classList.add("hidden");
         document.getElementById("page4").classList.remove("hidden");
